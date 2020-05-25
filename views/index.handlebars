@@ -1,0 +1,22 @@
+<h1>Burgers of the Day</h1>
+
+<h2>punny burgers</h2>
+
+<ul>
+    {{#each burger}}
+    {{#unless devoured}}
+    <p>{{this.burger_name}}</p>
+    {{/unless}}
+    {{/each}}
+</ul>
+
+<h2>add a burger</h2>
+<form class="create-form">
+
+    <div class="form-group">
+        <label for="bg">BurgerName:</label>
+        <input type="text" id="ca" name="name">
+    </div>
+
+    <button type="submit">make your own burger</button>
+</form>
