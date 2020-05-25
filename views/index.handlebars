@@ -1,22 +1,60 @@
-<h1>Burgers of the Day</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-3 bglist">
+            <h1>ANY TAKERS?</h1>
+            <ul>
+                {{#each burger}}
+                {{#unless devoured}}
+                <p>{{this.burger_name}}
+                <p> {{> bgbtn }} {{> deletebtn }} </p>
+                <hr>
+                </p>
+                {{/unless}}
+                {{/each}}
+            </ul>
+        </div>
 
-<h2>punny burgers</h2>
+        <div class="col-sm-6">
+            <img class="pd-sign center mx-auto" src="../assets/img/bbsign.png" alt="bob's burgers sign">
+            <img class="center mx-auto" src="../assets/img/bb.png" alt="bob's burgers fam" width="400" height="390">
 
-<ul>
-    {{#each burger}}
-    {{#unless devoured}}
-    <p>{{this.burger_name}}</p>
-    {{/unless}}
-    {{/each}}
-</ul>
+            <div class="container">
+                <div class="row">
 
-<h2>add a burger</h2>
-<form class="create-form">
+                    <div class="center mx-auto">
 
-    <div class="form-group">
-        <label for="bg">BurgerName:</label>
-        <input type="text" id="ca" name="name">
+                        <h1>ADD A BURGER</h1>
+
+                        <form class="create-form center mx-auto">
+                            <div class="form-row align-items-center">
+                                <div class="col-auto">
+                                    <label class="sr-only" for="inlineFormInput">Burger:</label>
+                                    <input type="text" class="form-control mb-2" id="newbg-input"
+                                        placeholder="Bohemian Radishy">
+                                </div>
+                                <div class="col-auto">
+                                    <button type="submit" class="btn btn-danger mb-2" id="add-btn">+</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-sm-3 bglist">
+            <h1>PARTY IN MY TUMMY</h1>
+            <ul>
+                {{#each burger}}
+                {{#if devoured}}
+                <p>{{this.burger_name}}
+                <p> {{> remakebtn }} {{> deletebtn }} </p>
+                <hr>
+                </p>
+                {{/if}}
+                {{/each}}
+            </ul>
+        </div>
     </div>
-
-    <button type="submit">make your own burger</button>
-</form>
+</div>
