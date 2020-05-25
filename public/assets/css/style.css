@@ -1,0 +1,56 @@
+@font-face {
+    font-family: 'bobs_burgers_2regular';
+    src: url('./bobs_burgers_2-webfont.woff2') format('woff2'),
+         url('./bobs_burgers_2-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  
+  }
+  
+  @font-face {
+    font-family: 'bobs_burgersregular';
+    src: url('./bobs_burgers-webfont.woff2') format('woff2'),
+         url('./bobs_burgers-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  
+  }
+  
+  .center {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .bglist {
+    padding-top: 100px;
+  }
+  
+  
+  h1 {
+    font-family: 'bobs_burgersregular';
+    color: #da0000;
+    text-align: center;
+    padding: 10px;
+  }
+  
+  body {
+    background-color: #F7DE53;
+  }
+  
+  p{
+    text-align: center;
+    font-family: 'Permanent Marker';
+    font-size: 20px;
+    padding:0px;
+  }
+  
+  li {
+      padding: 5px;
+      margin: 5px;
+      background: #faebd7;
+    }
+  
+  .pd-sign {
+      margin-top: 70px;
+  }
