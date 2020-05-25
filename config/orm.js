@@ -1,10 +1,9 @@
 // Import MySQL connection.
 const connection = require("../config/connection.js");
 
-
 const orm = {
     all: function (tableInput, cb) {
-        var queryString = "SELECT * FROM " + tableInput + ";";
+        const queryString = "SELECT * FROM " + tableInput + ";";
         connection.query(queryString, function (err, result) {
             if (err) {
                 throw err;
@@ -12,15 +11,27 @@ const orm = {
             cb(result);
         });
     },
+    /*all: function (tableInput) {
+        return new Promise((resolve, reject) => {
+            const queryString = "SELECT * FROM " + tableInput + ";";
+
+            connection.query(queryString, function (err, result) {
+                if (err) reject(err);
+                resolve(result);
+            })
+        })
+    },*/
+
     create: function (table, cols, vals, cb) {
         var queryString = "INSERT INTO " + table;
 
         queryString += " (";
         queryString += cols.toString();
         queryString += ") ";
-        queryString += "VALUES (";
-        queryString += printQuestionMarks(vals.length);
-        queryString += ") ";
+        queryString += "VALUES ('";
+        //queryString += printQuestionMarks(vals.length);
+        queryString += vals.toString();
+        queryString += "')";
 
         console.log(queryString);
 
@@ -32,11 +43,12 @@ const orm = {
             cb(result);
         });
     },
+
     update: function (table, objColVals, condition, cb) {
         var queryString = "UPDATE " + table;
 
         queryString += " SET ";
-        queryString += objToSql(objColVals);
+        queryString += objColVals;
         queryString += " WHERE ";
         queryString += condition;
 
@@ -48,8 +60,24 @@ const orm = {
 
             cb(result);
         });
-    }
-}
+    },
 
-// Export the orm object for the model.
+    delete: function (table, condition, cb) {
+        var queryString = "DELETE FROM " + table;
+        queryString += " WHERE ";
+        queryString += condition;
+
+        connection.query(queryString, function (err, result) {
+            if (err) {
+                throw err;
+            }
+
+            cb(result);
+        });
+    }
+};
+
+
+
+// Export the orm object for the model .
 module.exports.orm = orm;
